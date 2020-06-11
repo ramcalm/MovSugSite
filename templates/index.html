@@ -1,0 +1,52 @@
+
+<head>
+    <!-- Required meta tags always come first -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+    <title>MovSug</title>
+    <style type="text/css">
+        section {
+            background-image: url('https://i.ytimg.com/vi/245_u3OsrnE/maxresdefault.jpg');
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-size: cover;
+            min-height: 550px;
+        }
+    </style>
+</head>
+<body>
+    <header class="bg-dark">
+        <div class="container">
+            <div class="row text-white">
+                <div class="col-12 col-md-6">
+                    <h1>Movie Suggestor</h1>
+                    <p>Recently saw a movie and got attracted by it's story-line? Got awestruck by a movie character and looking forward to see such
+                    similar characters in a movie? You have reached the right place. MovSug helps you to identify movies similar to the ones
+                    you wish for.. Our algorithm gives you a list of movies that are similar to the movie you seek for. </p>
+                    <br>
+                </div>
+            </div>
+        </div>
+    </header>
+    <section class="bg-primary">
+        <div class="container">
+            <br>
+            <form action = "http://localhost:5000/result" method = "POST">
+                <div class="row">
+                    <input type = "text" name = "movie" class="col-md-5 col-11 offset-md-3" placeholder="Enter Movie Name" style="height: 40px" />
+                    <input type = "submit" value = "Search" class="col-md-1 col-1 btn-dark" style="height: 40px" />
+                </div>
+            </form>
+        </div>
+    </section>
+    <!-- jQuery first, then Popper.js, then Bootstrap JS. -->
+    <!-- JS, Popper.js, and jQuery -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+</body>

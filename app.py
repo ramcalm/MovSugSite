@@ -1,5 +1,6 @@
 from flask import Flask, render_template, request
 from movie_recommendation import similar_movies
+import requests
 
 app = Flask(__name__)
 
@@ -16,8 +17,15 @@ def result():
         movies = similar_movies(result["movie"])
         print(movies)
         if movies[1] != 'Movie not found':
-            return render_template('res.html', result=movies)
+            response = requests.get(
+                'https://api.themoviedb.org/3/search/movie?api_key=a0baf7fe65087ee95486de5163e616ed&language=en-US'
+                '&query="' + movies[0] + '"&page=1')
+            print(response.status_code)
+            dat = response.json()['page']
+            print(dat)
+            return render_template('res.html', result=movies, data=dat)
         else:
+
             return render_template('notfound.html', result=movies)
 
 

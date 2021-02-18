@@ -13,8 +13,12 @@ def index():
 def result():
     if request.method == 'POST':
         result = request.form
-        movies=similar_movies(result["movie"])
-        return render_template('res.html', result=movies)
+        movies = similar_movies(result["movie"])
+        print(movies)
+        if movies[1] != 'Movie not found':
+            return render_template('res.html', result=movies)
+        else:
+            return render_template('notfound.html', result=movies)
 
 
 if __name__ == '__main__':

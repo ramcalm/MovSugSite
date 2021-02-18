@@ -12,22 +12,24 @@ Original file is located at
 import pandas as pd
 import numpy as np
 from sklearn.feature_extraction.text import CountVectorizer
-cv=CountVectorizer()
+
+cv = CountVectorizer()
 from sklearn.metrics.pairwise import cosine_similarity
 
 """## **Define functions to return movie names from movie index and vice-versa**"""
 
+
 def get_title_from_index(index):
-  return df[df.index==index]["title"].values[0]
+    return df[df.index == index]["title"].values[0]
+
 
 def get_index_from_title(title):
-  return df[df.title==title]["index"].values[0]
+    return df[df.title == title]["index"].values[0]
+
 
 """## **Upload the Dataset**"""
 
-
-
-df=pd.read_csv("movie_dataset.csv")
+df = pd.read_csv("movie_dataset.csv")
 
 """## **Explore the Dataset**"""
 
@@ -39,38 +41,52 @@ df.columns
 For this example, I have chosen - Keywords,Cast,Genre,Director
 """
 
-features=['keywords','cast','genres','director']
+features = ['keywords', 'cast', 'genres', 'director']
 
 for feature in features:
-  df[feature]=df[feature].fillna('')
+    df[feature] = df[feature].fillna('')
 
 """##**Combine the features as continuous text format to check for similarity**"""
 
-def combine_features(row):
-  return row["keywords"]+" "+row["cast"]+row["genres"]+" "+row["director"]
 
-df["combined_features"]=df.apply(combine_features,axis=1)
+def exists(movie):
+    if movie in df.title.values:
+        return 1
+    else:
+        return 0
+
+
+def combine_features(row):
+    return row["keywords"] + " " + row["cast"] + row["genres"] + " " + row["director"]
+
+
+df["combined_features"] = df.apply(combine_features, axis=1)
 
 df["combined_features"].head()
 
 """##**Using cosine similarity identify the movies similar to user's interest**"""
 
-count_matrix=cv.fit_transform(df["combined_features"])
+count_matrix = cv.fit_transform(df["combined_features"])
 
-cosine_sim=cosine_similarity(count_matrix)
+cosine_sim = cosine_similarity(count_matrix)
+
 
 def similar_movies(movie_user_likes):
-    movie_index=get_index_from_title(movie_user_likes)
-    similar_movies=list(enumerate(cosine_sim[movie_index]))
-    sorted_similar_movies=sorted(similar_movies,key=lambda x:x[1],reverse=True)
-    i=0
-    movies={}
-    for movie in sorted_similar_movies:
-        movies[i]=get_title_from_index(movie[0])
-        i=i+1
-        if i==11:
-            break
-    if not movies:
-        return 0
+    if exists(movie_user_likes):
+        movie_index = get_index_from_title(movie_user_likes)
+        similar_movies = list(enumerate(cosine_sim[movie_index]))
+        sorted_similar_movies = sorted(similar_movies, key=lambda x: x[1], reverse=True)
+        i = 0
+        movies = {}
+        for movie in sorted_similar_movies:
+            movies[i] = get_title_from_index(movie[0])
+            i = i + 1
+            if i == 11:
+                break
+        if not movies:
+            return 0
+        else:
+            return movies
     else:
-        return movies
+        mov = [movie_user_likes, 'Movie not found']
+        return mov

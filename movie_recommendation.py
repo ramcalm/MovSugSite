@@ -50,7 +50,7 @@ for feature in features:
 
 
 def exists(movie):
-    if movie in df.title.values:
+    if movie in np.char.lower(df.title.values):
         return 1
     else:
         return 0

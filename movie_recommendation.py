@@ -12,9 +12,9 @@ Original file is located at
 import pandas as pd
 import numpy as np
 from sklearn.feature_extraction.text import CountVectorizer
-
-cv = CountVectorizer()
 from sklearn.metrics.pairwise import cosine_similarity
+cv = CountVectorizer()
+
 
 """## **Define functions to return movie names from movie index and vice-versa**"""
 
@@ -37,7 +37,7 @@ df.head()
 
 df.columns
 
-"""## **Choose the features you are going to use for classication.**
+"""## **Choose the features you are going to use for classification.**
 For this example, I have chosen - Keywords,Cast,Genre,Director
 """
 
@@ -50,7 +50,7 @@ for feature in features:
 
 
 def exists(movie):
-    if movie in np.char.lower(df.title.values):
+    if movie in df.title.values:
         return 1
     else:
         return 0

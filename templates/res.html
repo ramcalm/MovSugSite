@@ -10,7 +10,7 @@
     <title>MovSug</title>
     <style type="text/css">
         section {
-            background-image: url('https://i.ytimg.com/vi/b5Bga08heSQ/maxresdefault.jpg');
+            background-image: url('https://i.ibb.co/jJwx78X/img.jpg');
             background-repeat: no-repeat;
             background-attachment: fixed;
             background-size: cover;
@@ -28,33 +28,51 @@
 <body>
     <header class="bg-dark">
     <nav class="navbar navbar-light bg-dark border-primary">
-        <a class="navbar-brand text-white" href="index.html">MovSug</a>
+        <a class="navbar-brand text-white" href="\">MovSug</a>
     </nav>
     </header>
     <section class="bg-white">
         <div class="container">
             <p class="text-white" style="font-size: 30px">Movies similar to <span class="text-primary">{{ result[0] }}</span></p>
-        <div class="container-fluid">
-        <table class="table table-striped text-center text-white" style="width: 80%; margin-left: auto; margin-right: auto">
-            <thead class="thead-dark">
-                <tr>
-                    <th style="width: 10%">Rank</th>
-                    <th style="width: 90%">Movie Name</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for i in range(1,11): %}
-                <tr>
-                    <td>#{{ i }} </td>
-                    <td> {{ result[i] }} </td>
-                </tr>
-                {% endfor %}
-            </tbody>
-        </table>
-        </div>
-        <div class="row">
-            <a href="http://localhost:5000/" class="btn-warning col-2 offset-5 text-center" style="font-size: 18px">Back to Home Page</a>
-        </div>
+            <div class="container">
+                <div class="row text-white">
+                    <div class="col-md-8 p-3">
+                        <p>Overview:&nbsp;{{overview}}</p>
+                        <p>Release Date:&nbsp;{{rdate}}</p>
+                        <br>
+                        <p>Rating:&nbsp;{{rating}}/10</p>
+                        <p>Votes:&nbsp;{{votes}}</p>
+                        <br>
+                    </div>
+                    <div class="col-md-4 text-center">
+                        <img src="{{ poster }}" class="img-fluid" alt="{{ result[0] }}">
+                    </div>
+                </div>
+            </div>
+            <br><br>
+            <div class="container-fluid">
+            <table class="table table-striped text-center text-white" style="width: 80%; margin-left: auto; margin-right: auto">
+                <thead class="thead-dark">
+                    <tr>
+                        <th style="width: 10%">Rank</th>
+                        <th style="width: 90%">Movie Name</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for i in range(1,11): %}
+                    <tr>
+                        <td>#{{ i }} </td>
+                        <td> {{ result[i] }} </td>
+                    </tr>
+                    {% endfor
+                    %}
+                </tbody>
+            </table>
+            </div>
+            <div class="row">
+                <a href="/" class="btn-warning col-2 offset-5 text-center" style="font-size: 18px">Back to Home Page</a>
+            </div>
+            <br><br>
         </div>
     </section>
 

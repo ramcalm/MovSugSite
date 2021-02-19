@@ -18,7 +18,7 @@ def result():
         movies = similar_movies(result["movie"])
         if movies[1] != 'Movie not found':
             response = requests.get(
-                'https://api.themoviedb.org/3/search/movie?api_key=a0baf7fe65087ee95486de5163e616ed&language=en-US'
+                'https://api.themoviedb.org/3/search/movie?api_key=<<YOUR_API_KEY>>&language=en-US'
                 '&query="' + movies[0] + '"&page=1')
             dat = response.json()
             poster = "https://image.tmdb.org/t/p/w185/"+dat["results"][0]["poster_path"]

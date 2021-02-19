@@ -29,8 +29,8 @@ python app.py
 
 Sample:
 
-<img src="https://i.ibb.co/0KSVyff/op1.png" alt="image">
+<img src="https://i.ibb.co/0KSVyff/op1.png" align="center" width="500px" alt="image">
 <br>
 <br>
-<img src="https://i.ibb.co/XsLffz9/op2.png" alt="image">
+<img src="https://i.ibb.co/XsLffz9/op2.png" align="center" width="500px" alt="image">
 

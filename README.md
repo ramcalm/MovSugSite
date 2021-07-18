@@ -36,10 +36,10 @@ Sample:
 <br>
 <img src="https://i.ibb.co/XsLffz9/op2.png" align="center" width="750px" alt="image">
 
-# API:
+## API:
 Other applications can also use the service via HTTP get/post request.
 
-## POST Request: 
+### POST Request: 
 Pass the movie name as a parameter 
 
 Get Similar:
@@ -50,7 +50,7 @@ Get Info:
 
 <img src="https://i.ibb.co/Nr5LL4v/Screenshot-528.png" align="center" width="760px" alt="image">
 
-## GET Request:
+### GET Request:
 Add the movie name in the url as a query parameter:
 
 Get Similar: https://moviesug.herokuapp.com/getsimilar?movie=interstellar <br>

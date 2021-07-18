@@ -16,30 +16,22 @@ from sklearn.metrics.pairwise import cosine_similarity
 cv = CountVectorizer()
 
 
-"""## **Define functions to return movie names from movie index and vice-versa**"""
-
-
 def get_title_from_index(index):
     return df[df.index == index]["title"].values[0]
 
 
 def get_index_from_title(title):
-    return df[df.title == title]["index"].values[0]
+    return df[df.title_uppercase == title]["index"].values[0]
 
 
-"""## **Upload the Dataset**"""
 
-df = pd.read_csv("movie_dataset.csv")
+df = pd.read_csv("moviedata.csv")
 
-"""## **Explore the Dataset**"""
 
 df.head()
 
 df.columns
 
-"""## **Choose the features you are going to use for classification.**
-For this example, I have chosen - Keywords,Cast,Genre,Director
-"""
 
 features = ['keywords', 'cast', 'genres', 'director']
 
@@ -50,7 +42,7 @@ for feature in features:
 
 
 def exists(movie):
-    if movie in df.title.values:
+    if movie in df.title_uppercase.values:
         return 1
     else:
         return 0
@@ -72,8 +64,10 @@ cosine_sim = cosine_similarity(count_matrix)
 
 
 def similar_movies(movie_user_likes):
-    if exists(movie_user_likes):
-        movie_index = get_index_from_title(movie_user_likes)
+    movie_user_likes2=movie_user_likes.upper()
+    print(exists(movie_user_likes2))
+    if exists(movie_user_likes2):
+        movie_index = get_index_from_title(movie_user_likes2)
         similar_movies = list(enumerate(cosine_sim[movie_index]))
         sorted_similar_movies = sorted(similar_movies, key=lambda x: x[1], reverse=True)
         i = 0

@@ -9,6 +9,7 @@ Here the algorithm used is Cosine_Similarity algorithm which is done on the data
 
 After fetching the similar movie based on the Algorithm using TMDB API details regarding the movie is fetched and displayed for the user.
 
+## Run Locally:
 
 If you want to run it in your local environment locally follow the following steps
 
